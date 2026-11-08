@@ -4,13 +4,71 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* mobile view  */
+/* ===== Mobile-only blinking "TAP FOR MORE" overlay ===== */
+@media (max-width: 768px) {
+  .portfolio-container .portfolio-item {
+    position: relative !important;
+    display: block !important;
+    overflow: hidden !important;
+  }
+
+  /* turn off the old overlay completely on mobile */
+  .portfolio-container .portfolio-item .overlay,
+  .portfolio-container .portfolio-item:hover .overlay,
+  .portfolio-container .portfolio-item:active .overlay {
+    display: none !important;
+  }
+
+  /* new always-on, centered, blinking box */
+  .portfolio-container .portfolio-item::after {
+    content: "TAP\A FOR MORE";
+    white-space: pre;
+    position: absolute;
+    top: 6%;
+    right: 6%;
+    bottom: 6%;
+    left: 6%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: clamp(28px, 9vw, 40px);
+    line-height: 1.2;
+    letter-spacing: 1px;
+    pointer-events: none;   /* taps still open the link */
+    animation: tapBlink 1.6s ease-in-out infinite;
+  }
+
+  @keyframes tapBlink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.15; }
+  }
+}
+/* mobile view  */
 
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: #000; /* CHANGED: Set the entire page background to black */
     color: #fff; /* CHANGED: Set default text color to white for readability */
 }
+.whatsapp_float {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  z-index: 9999;   /* keeps it above other content */
+}
 
+.whatsapp_float_button img {
+  width:150px;
+  height: 150px;
+  display: block;
+}
 .container {
     width: 90%;
     max-width: 1200px; 
@@ -248,4 +306,493 @@ body {
     .project-header .project-title {
         font-size: 22px;
     }
+}
+/* aboutuss */
+/* ===== About page (all classes prefixed "abt") ===== */
+.abt,
+.abt *,
+.abt *::before,
+.abt *::after {
+  box-sizing: border-box;
+}
+
+.abt {
+  background: #050508;
+  color: #ffffff;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.abt img {
+  max-width: 100%;
+  display: block;
+}
+
+.abt h1,
+.abt h2,
+.abt h3,
+.abt p {
+  margin: 0;
+}
+
+/* Button */
+.abt-btn {
+  display: inline-block;
+  background: #ffffff;
+  color: #111111;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.abt-btn:hover {
+  background: #d9d9d9;
+  transform: translateY(-2px);
+}
+
+/* Small label above headings */
+.abt-tag {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #cfcfcf;
+  margin-bottom: 6px;
+}
+
+/* ===== Hero ===== */
+.abt-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)), url('images/about-hero.jpg') center/cover no-repeat;
+  text-align: center;
+  padding: 90px 20px 70px;
+}
+
+.abt-hero-title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.abt-breadcrumb {
+  font-size: 0.85rem;
+  color: #bdbdbd;
+}
+
+.abt-breadcrumb a {
+  color: #bdbdbd;
+  text-decoration: none;
+}
+
+.abt-breadcrumb span {
+  margin: 0 6px;
+}
+
+.abt-breadcrumb .abt-current {
+  margin: 0;
+  color: #ffffff;
+}
+
+/* ===== About ===== */
+.abt-about {
+  padding: 80px 20px;
+}
+
+.abt-about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.abt-about-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.abt-heading {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.abt-para {
+  font-size: 0.85rem;
+  color: #c4c4c4;
+  line-height: 1.8;
+}
+
+.abt-about-text .abt-para {
+  margin-bottom: 28px;
+  max-width: 480px;
+}
+
+/* ===== Skills & Stats ===== */
+.abt-skills {
+  padding: 20px 20px 80px;
+}
+
+.abt-skills-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.abt-skills-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.abt-skills-left > .abt-para {
+  margin-bottom: 28px;
+  max-width: 440px;
+}
+
+.abt-bar {
+  margin-bottom: 22px;
+  max-width: 440px;
+}
+
+.abt-bar-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+.abt-bar-track {
+  width: 100%;
+  height: 3px;
+  background: #333333;
+}
+
+.abt-bar-fill {
+  height: 100%;
+  background: #ffffff;
+}
+
+.abt-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px 20px;
+  text-align: center;
+}
+
+.abt-stat h3 {
+  font-size: 2.3rem;
+  font-weight: 600;
+  color: #dcdcdc;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.abt-stat p {
+  font-size: 0.8rem;
+  color: #bdbdbd;
+}
+
+/* ===== CTA ===== */
+.abt-cta {
+  padding: 0 20px 90px;
+}
+
+.abt-cta-box {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 90px 20px;
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/cta-banner.jpg') center/cover no-repeat;
+  background-color: #1a1a1a;
+}
+
+.abt-cta-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 6px 0 28px;
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 992px) {
+  .abt-about {
+    padding: 60px 20px;
+  }
+
+  .abt-about-inner,
+  .abt-skills-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .abt-heading {
+    font-size: 2.1rem;
+  }
+
+  .abt-cta-title {
+    font-size: 1.9rem;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 576px) {
+  .abt-hero {
+    padding: 60px 20px 45px;
+  }
+
+  .abt-hero-title {
+    font-size: 2.2rem;
+  }
+
+  .abt-about {
+    padding: 40px 20px;
+  }
+
+  .abt-about-inner,
+  .abt-skills-inner {
+    gap: 28px;
+  }
+
+  .abt-heading {
+    font-size: 1.7rem;
+  }
+
+  .abt-skills {
+    padding: 10px 20px 50px;
+  }
+
+  .abt-skills-title {
+    font-size: 1.5rem;
+  }
+
+  .abt-stats {
+    gap: 35px 10px;
+  }
+
+  .abt-stat h3 {
+    font-size: 1.8rem;
+  }
+
+  .abt-cta {
+    padding-bottom: 50px;
+  }
+
+  .abt-cta-box {
+    padding: 60px 16px;
+  }
+
+  .abt-cta-title {
+    font-size: 1.4rem;
+  }
+}
+ /* footer */
+ /* ===== Footer (ftrr) ===== */
+.ftrr {
+  background: #1f1f1f;
+  color: #ffffff;
+  padding: 60px 20px 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+.ftrr-logo-img {
+  height: 50px;
+  width: auto;
+  max-width: 100%;
+  display: block;
+}
+.ftrr-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 40px;
+}
+.ftrr *,
+.ftrr *::before,
+.ftrr *::after {
+  box-sizing: border-box;
+}
+
+.ftrr-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1.3fr;
+  gap: 40px;
+}
+
+/* Logo */
+.ftrr-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.ftrr-logo-icon {
+  width: 36px;
+  height: 36px;
+  border: 2px solid #ffffff;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ftrr-logo-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ftrr-logo-text {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+
+.ftrr-logo-text small {
+  display: block;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-top: 3px;
+}
+
+.ftrr-text {
+  color: #b5b5b5;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  max-width: 320px;
+  margin-bottom: 20px;
+}
+
+/* Social icons */
+.ftrr-social {
+  display: flex;
+  gap: 8px;
+}
+
+.ftrr-social a {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #1f1f1f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.ftrr-social a:hover {
+  background: #d4ff00;
+  transform: translateY(-3px);
+}
+
+.ftrr-social svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Titles & lists */
+.ftrr-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.ftrr-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ftrr-list li {
+  margin-bottom: 14px;
+  font-size: 0.85rem;
+  color: #b5b5b5;
+}
+
+.ftrr-list a {
+  color: #b5b5b5;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.ftrr-list a:hover {
+  color: #ffffff;
+}
+
+/* Contact list with icons */
+.ftrr-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ftrr-contact-list svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: #ffffff;
+}
+
+/* Bottom bar */
+.ftrr-bottom {
+  max-width: 1100px;
+  margin: 40px auto 0;
+  padding: 24px 0;
+  text-align: center;
+}
+
+.ftrr-bottom p {
+  color: #b5b5b5;
+  font-size: 0.8rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .ftrr-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ftrr-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 576px) {
+  .ftrr {
+    padding: 40px 20px 0;
+  }
+
+  .ftrr-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .ftrr-brand {
+    grid-column: auto;
+  }
+
+  .ftrr-title {
+    margin-bottom: 14px;
+  }
+
+  .ftrr-bottom {
+    margin-top: 20px;
+  }
 }
